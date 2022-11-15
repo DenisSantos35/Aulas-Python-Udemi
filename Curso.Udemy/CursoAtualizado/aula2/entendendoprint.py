@@ -1,0 +1,8 @@
+print('recebe um argumento')
+print('pode chamar(,)','atraves de virgulas', sep="/")
+print('Quebra linhas a cada print')
+print('Argumento sep="aqui vai o tipo de separador"')
+print(10, 20, 30, '\n',40,"\r", 50, sep="-")
+print("barra(\)n e (\)r quebra linha no python")
+print("A palavra end=''", end=" ")
+print("concatena na mesma linha 2 ou mais pint")
