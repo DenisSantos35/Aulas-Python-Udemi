@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend><h2>Nome</h2></legend>
+        <label for="nome">Digite seu Nome:</label>
+        <input type="text" name="nome" id="nome">
+    </fieldset>
+    <fieldset>
+        <legend><h2>Peso</h2></legend>
+        <label for="peso">Digite seu Peso:</label>
+        <input type="number" name="peso" id="peso">
+    </fieldset>
+    <fieldset>
+        <legend><h2>Altura</h2></legend>
+        <label for="altura">Digite sua Altura:</label>
+        <input type="number" name="altura" id="altura">
+    </fieldset>
+    <hr>
+    <button id="calcular" style = 'background-color: red; color: white; margin-left: 50%;'>CALCULAR</button>
+    <hr>
+    <div id="resposta" style = 'font-size: 24px;'>Aguarde o calculo</div>
+
+    <script>
+        const nome = document.querySelector('#nome');
+        const peso = document.querySelector('#peso');
+        const altura = document.querySelector('#altura');
+        const botao = document.querySelector('#calcular');
+        const resposta = document.querySelector('#resposta');
+        
+
+        function validacao(){
+            if(! isNaN(nome.value) || nome.value === ''){
+                alert('Erro!!! Digite um nome valido');
+                nome.value = '';
+                nome.focus();
+                return false;
+            }
+            if(isNaN(peso.value) || peso.value === ''){
+                alert('Erro!!! Digite um peso valido')
+                peso.value = '';
+                peso.focus();
+                return false;
+            }
+            if(isNaN(altura.value) || altura.value === ''){
+                alert('Erro!!! Digite uma altura valido')
+                altura.value = '';
+                altura.focus();
+                return false;
+            }
+            return true;
+        }
+
+        botao.addEventListener('click', () => {           
+            if(validacao()){
+                const alt = Number(altura.value);
+                console.log(typeof alt)
+                const pes = Number(peso.value);
+                const imc = pes / (alt ** 2)
+                
+                resposta.innerHTML = `O ${nome.value.toUpperCase()} tem altura de ${alt.toFixed(2)} pesa ${pes.toFixed(2)} Kg e o valor do seu imc é igual a: ${imc.toFixed(2)}`
+            }
+        });
+
+        document.addEventListener('keyup', function(e){
+           if(e.key === "Enter"){
+            if(validacao()){
+                const alt = Number(altura.value);
+                console.log(typeof alt)
+                const pes = Number(peso.value);
+                const imc = pes / (alt ** 2)
+                resposta.innerHTML = `O ${nome.value.toUpperCase()} tem altura de ${alt.toFixed(2)} pesa ${pes.toFixed(2)} Kg e o valor do seu imc é igual a: ${imc.toFixed(2)}`
+            }
+           }
+        })
+    </script>
+</body>
+</html>
